@@ -1,0 +1,7 @@
+services:
+  - type: web
+    name: studymate-ai
+    runtime: docker
+    dockerfilePath: ./backend/Dockerfile
+    dockerContext: ./backend
+    plan: free

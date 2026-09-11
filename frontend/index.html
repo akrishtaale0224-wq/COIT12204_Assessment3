@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>StudyMate AI</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="app-container">
+
+        <!-- Sidebar -->
+        <aside class="sidebar">
+
+            <div class="logo">
+                <div class="logo-icon">✦</div>
+
+                <div>
+                    <h1>StudyMate</h1>
+                    <p>AI Study Assistant</p>
+                </div>
+            </div>
+
+            <button id="newChatButton" class="new-chat-button">
+                + New Chat
+            </button>
+
+            <div class="sidebar-info">
+
+                <h3>About StudyMate</h3>
+
+                <p>
+                    Your AI-powered study assistant for
+                    understanding concepts, learning
+                    programming and getting academic help.
+                </p>
+
+            </div>
+
+            <div class="sidebar-footer">
+                <span>Powered by Gemini</span>
+            </div>
+
+        </aside>
+
+
+        <!-- Main Chat Area -->
+        <main class="chat-container">
+
+            <!-- Header -->
+            <header class="chat-header">
+
+                <div class="assistant-info">
+
+                    <div class="assistant-avatar">
+                        ✦
+                    </div>
+
+                    <div>
+                        <h2>StudyMate AI</h2>
+
+                        <div class="status">
+                            <span class="status-dot"></span>
+                            Online
+                        </div>
+                    </div>
+
+                </div>
+
+            </header>
+
+
+            <!-- Messages -->
+            <section id="chatMessages" class="chat-messages">
+
+                <div class="message assistant-message">
+
+                    <div class="message-avatar">
+                        ✦
+                    </div>
+
+                    <div class="message-content">
+
+                        <div class="message-name">
+                            StudyMate AI
+                        </div>
+
+                        <div class="message-bubble">
+                            Hello! 👋 I'm StudyMate AI.
+
+                            <br><br>
+
+                            I can help you understand
+                            programming concepts, explain
+                            technical topics and support
+                            your university studies.
+
+                            <br><br>
+
+                            What would you like to learn today?
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- Loading indicator -->
+            <div id="typingIndicator" class="typing-indicator hidden">
+
+                <div class="typing-avatar">
+                    ✦
+                </div>
+
+                <div class="typing-bubble">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+
+                <span class="thinking-text">
+                    StudyMate is thinking...
+                </span>
+
+            </div>
+
+
+            <!-- Input Area -->
+            <footer class="input-area">
+
+                <div class="input-container">
+
+                    <textarea
+                        id="messageInput"
+                        placeholder="Ask StudyMate anything..."
+                        rows="1"
+                        maxlength="2000">
+                    </textarea>
+
+                    <button
+                        id="sendButton"
+                        class="send-button"
+                        aria-label="Send message">
+
+                        ➤
+
+                    </button>
+
+                </div>
+
+                <p class="input-note">
+                    StudyMate AI can make mistakes.
+                    Check important information with reliable sources.
+                </p>
+
+            </footer>
+
+        </main>
+
+    </div>
+
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
