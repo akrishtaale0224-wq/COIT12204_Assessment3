@@ -284,7 +284,7 @@ The test suite covers:
 The current test suite contains:
 
 ```text
-13 tests
+21 automated tests covering agent behaviour, state transitions, tool behaviour, API validation, mocked LLM responses, failure handling, and logging.
 ```
 
 All tests were successfully executed during development.
