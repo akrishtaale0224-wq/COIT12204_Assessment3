@@ -16,6 +16,12 @@ class AgentState(TypedDict, total=False):
 
     tool_result: Any
 
+    last_tool_call: str
+
+    error_count: int
+
+    history: List[Dict[str, str]]
+
     status: str
 
 
@@ -30,5 +36,34 @@ def create_initial_state(user_message: str) -> AgentState:
         "agent_response": "",
         "tool_used": False,
         "tool_result": None,
+        "last_tool_call": "",
+        "error_count": 0,
+        "history": [
+            {
+                "action": "agent_started",
+                "status": "started"
+            }
+        ],
         "status": "started"
     }
+
+
+def update_state(
+    state: AgentState,
+    status: str,
+    action: str
+) -> AgentState:
+    """
+    Update the agent state and record a state transition.
+    """
+
+    state["status"] = status
+
+    state["history"].append(
+        {
+            "action": action,
+            "status": status
+        }
+    )
+
+    return state

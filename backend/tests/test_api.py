@@ -71,3 +71,66 @@ def test_new_chat_endpoint():
     data = response.json()
 
     assert data["message"] == "New conversation started."
+
+
+def test_agent_endpoint_handles_agent_failure(monkeypatch):
+
+    def mock_failed_agent(message):
+
+        return {
+            "status": "failed",
+            "agent_response": (
+                "I was unable to process your request. "
+                "Please try again."
+            ),
+            "tool_used": False
+        }
+
+    monkeypatch.setattr(
+        "backend.main.run_agent",
+        mock_failed_agent
+    )
+
+    response = client.post(
+        "/api/agent",
+        json={
+            "message": "Test agent failure."
+        }
+    )
+
+    assert response.status_code == 500
+
+    data = response.json()
+
+    assert data["detail"] == (
+        "Agent was unable to process the request."
+    )
+
+
+def test_agent_endpoint_handles_unexpected_error(monkeypatch):
+
+    def mock_unexpected_error(message):
+
+        raise RuntimeError(
+            "Unexpected test error"
+        )
+
+    monkeypatch.setattr(
+        "backend.main.run_agent",
+        mock_unexpected_error
+    )
+
+    response = client.post(
+        "/api/agent",
+        json={
+            "message": "Test unexpected failure."
+        }
+    )
+
+    assert response.status_code == 500
+
+    data = response.json()
+
+    assert data["detail"] == (
+        "Unable to process the agent request."
+    )
